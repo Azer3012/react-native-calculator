@@ -7,7 +7,14 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "debug:mac": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && cd android && ./gradlew assembleDebug && cd ../ && cp ./android/app/build/outputs/apk/debug/app-debug.apk calculator_debug$(date +'%m_%d_%Y').apk && open .",
+    "debug": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && cd android && gradlew assembleDebug && cd ../ && copy android/app/build/outputs/apk/debug/app-debug.apk calculator_debug.apk && start .",
+    "bundle:mac": "cd android && ./gradlew bundleRelease && cd ../ && cp ./android/app/build/outputs/bundle/release/app-release.aab ./calculator_release.aab && open .",
+    "bundle": "cd android && gradlew bundleRelease && cd ../ && cp ./android/app/build/outputs/bundle/release/app-release.aab ./calculator_release.aab && start .",
+    "release:mac": "cd android && ./gradlew app:assembleRelease && cd ../ && cp ./android/app/build/outputs/apk/release/app-release.apk ./calculator_release_$(date +'%m_%d_%Y').apk && open .",
+    "release": "cd android && gradlew app:assembleRelease && cd ../ && copy ./android/app/build/outputs/apk/release/app-release.apk ./calculator_release_.apk && start ."
+
   },
   "dependencies": {
     "react": "17.0.2",
